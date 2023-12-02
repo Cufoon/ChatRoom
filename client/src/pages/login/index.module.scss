@@ -1,0 +1,62 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(247, 247, 247);
+  z-index: 999;
+
+  .title {
+    font-size: 32px;
+    font-weight: bold;
+    color: rgba(145, 145, 145, 0.5);
+  }
+
+  .login-outer {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 300px;
+    height: 200px;
+    border-radius: 12px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 16px 1px rgba(0, 0, 0, 0.05);
+
+    .input {
+      display: block;
+      width: 200px;
+      height: 52px;
+      padding: 3px 6px;
+      line-height: 52px;
+      font-size: 26px;
+      color: rgb(82, 82, 82);
+      border: solid rgb(231, 231, 231) 2px;
+      border-radius: 12px;
+      outline: none;
+
+      &:focus {
+        border: solid rgb(141, 141, 141) 2px;
+        border-radius: 12px;
+      }
+    }
+
+    .comein {
+      color: rgb(255, 255, 255);
+      margin-top: 16px;
+      font-size: 16px;
+      padding: 4px 12px;
+      line-height: 26px;
+      background-color: rgb(62, 165, 255);
+      border-radius: 12px;
+      cursor: pointer;
+      user-select: none;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@import "../../../../global";
+
+.user {
+  width: 100%;
+  background-color: rgb(247, 247, 247);
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px;
+  padding: 8px 12px;
+  color: rgb(117, 117, 117);
+
+  &-list {
+    width: 100%;
+  }
+
+  &-line {
+    padding-bottom: 12px;
+
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+  }
+
+  .message-btn {
+    cursor: pointer;
+    user-select: none;
+    color: rgb(24, 117, 194);
+  }
+}
+
+.user-me {
+  color: rgb(0, 202, 51);
+}

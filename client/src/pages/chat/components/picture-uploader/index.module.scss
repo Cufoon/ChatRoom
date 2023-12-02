@@ -1,0 +1,35 @@
+.modal {
+  border-radius: 20px;
+  min-width: 80%;
+}
+
+.modal-wrapper {
+  padding: 50px 0;
+}
+
+.trigger {
+  background-color: var(--color-fill-2);
+  color: var(--color-text-1);
+  border: 1px dashed var(--color-fill-4);
+  height: 158px;
+  width: 100%;
+  border-radius: 20px;
+  line-height: 158px;
+  text-align: center;
+}
+
+.preview-outer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.preview-item-outer {
+  padding: 5px;
+  max-width: 160px;
+}
+
+.preview-item {
+  width: 100%;
+}
+
