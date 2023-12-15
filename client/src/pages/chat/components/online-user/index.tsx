@@ -24,7 +24,7 @@ const OnlineUser: React.FC<Props> = ({ users, currentUser }) => {
                 })}
               >
                 {item.name}
-                <div className={styles.messageBtn}>私聊</div>
+                {/* <div className={styles.messageBtn}>私聊</div> */}
               </div>
             </div>
           );

@@ -128,7 +128,7 @@ const Communication: React.FC<Props> = ({
 
   const renderContent = (text: string, type?: string) => {
     if (type === undefined) {
-      return text;
+      return <pre>{text}</pre>;
     }
     if (type === 'image') {
       // console.log(text);

@@ -5,7 +5,7 @@
   "main": "./src/main.js",
   "type": "module",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && esbuild build/main.js --bundle --platform=node --outfile=build/main.bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,13 +13,14 @@
   "license": "ISC",
   "devDependencies": {
     "@types/ws": "^8.5.10",
-    "prettier": "^3.1.0",
-    "typescript": "^5.3.2"
+    "esbuild": "^0.19.9",
+    "prettier": "^3.1.1",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
     "dayjs": "^1.11.10",
     "nanoid": "^5.0.4",
     "ora": "^7.0.1",
-    "ws": "^8.14.2"
+    "ws": "^8.15.1"
   }
 }

@@ -1,5 +1,5 @@
 .main {
-  width: calc(100% - 200px);
+  width: 88vw;
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -21,7 +21,7 @@
 
   .left {
     flex: 1;
-    min-width: 0;
+    min-width: 200px;
     height: 100%;
   }
 
