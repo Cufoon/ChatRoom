@@ -64,7 +64,7 @@ const Communication: React.FC<Props> = ({
 
   const onKeyDown: React.KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
     const eKey = e.key.toLowerCase();
-    if (eKey === 'shift') {
+    if (eKey === 'shift' || eKey === 'control') {
       lastShiftKeyTimerId.current && clearTimeout(lastShiftKeyTimerId.current);
       lastShiftKeyTimerId.current = undefined;
       lastShiftKey.current = true;
@@ -106,7 +106,7 @@ const Communication: React.FC<Props> = ({
 
   const onKeyUp: React.KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
     const eKey = e.key.toLowerCase();
-    if (eKey === 'shift') {
+    if (eKey === 'shift' || eKey === 'control') {
       lastShiftKeyTimerId.current = setTimeout(() => {
         lastShiftKey.current = false;
         lastShiftKeyTimerId.current = undefined;
@@ -128,7 +128,14 @@ const Communication: React.FC<Props> = ({
 
   const renderContent = (text: string, type?: string) => {
     if (type === undefined) {
-      return <pre>{text}</pre>;
+      return (
+        <div>
+          {text.split('\n').map((item) => {
+            console.log(item);
+            return <p>{item}</p>;
+          })}
+        </div>
+      );
     }
     if (type === 'image') {
       // console.log(text);

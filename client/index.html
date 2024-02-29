@@ -1,20 +1,90 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8"/>
-    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Private</title>
 </head>
 <style>
+    @font-face {
+        font-family: JetBrainsMono;
+        src: url('/webfonts/JetBrainsMono-BoldItalic.woff2') format('woff2');
+        font-weight: 700;
+        font-style: italic;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: JetBrainsMono;
+        src: url('/webfonts/JetBrainsMono-Bold.woff2') format('woff2');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: JetBrainsMono;
+        src: url('/webfonts/JetBrainsMono-ExtraBoldItalic.woff2') format('woff2');
+        font-weight: 800;
+        font-style: italic;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: JetBrainsMono;
+        src: url('/webfonts/JetBrainsMono-ExtraBold.woff2') format('woff2');
+        font-weight: 800;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: JetBrainsMono;
+        src: url('/webfonts/JetBrainsMono-Italic.woff2') format('woff2');
+        font-weight: 400;
+        font-style: italic;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: JetBrainsMono;
+        src: url('/webfonts/JetBrainsMono-MediumItalic.woff2') format('woff2');
+        font-weight: 500;
+        font-style: italic;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: JetBrainsMono;
+        src: url('/webfonts/JetBrainsMono-Medium.woff2') format('woff2');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: JetBrainsMono;
+        src: url('/webfonts/JetBrainsMono-Regular.woff2') format('woff2');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+    }
+
     #root {
         width: 100%;
         height: 100%;
         box-sizing: border-box;
+        font-family: JetBrainsMono, "MiSans", "SF Pro SC", "SF Pro Text", "SF Pro Icons",
+            "PingFang SC", "HarmonyOS_Regular", "Helvetica Neue",
+            "Microsoft YaHei", "Helvetica", "Arial", sans-serif;
     }
 </style>
+
 <body>
-<div id="root"></div>
-<script type="module" src="/src/root.tsx"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/root.tsx"></script>
 </body>
+
 </html>

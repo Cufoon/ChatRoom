@@ -1,4 +1,4 @@
-@import "../../../../global";
+@import '../../../../global';
 
 .content-outer {
   flex: 1;
@@ -44,7 +44,6 @@
     height: 0;
     width: 0;
   }
-
 
   .content {
     width: 100%;
@@ -98,6 +97,14 @@
         background-color: #ebeced;
         color: rgb(0, 0, 0);
         border-radius: 12px;
+
+        :global(p) {
+          margin: 0;
+          padding: 0;
+          white-space: break-spaces;
+          text-wrap: wrap;
+          word-break: break-all;
+        }
 
         &-mine {
           background-color: #d1e3ff;
