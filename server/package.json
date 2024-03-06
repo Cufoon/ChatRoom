@@ -5,7 +5,7 @@
   "main": "./src/main.js",
   "type": "module",
   "scripts": {
-    "build": "tsc && esbuild build/main.js --bundle --platform=node --outfile=build/main.bundle.js",
+    "build": "tsc && esbuild build/main.js --bundle --platform=node --outfile=build/main.bundle.cjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

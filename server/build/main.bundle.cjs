@@ -6921,7 +6921,7 @@ var consoleSpinner = ora({ spinner: "soccerHeader" }).start("\u5F00\u59CB\u8FD0\
 var msgCount = 0n;
 var formatTime = () => (0, import_dayjs.default)().format("YYYY-MM-DD HH:mm:ss");
 var wss = new import_websocket_server.default({
-  port: 5e3,
+  port: 3345,
   clientTracking: true,
   maxPayload: 42949672960,
   perMessageDeflate: {
