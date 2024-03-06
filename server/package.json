@@ -13,14 +13,14 @@
   "license": "ISC",
   "devDependencies": {
     "@types/ws": "^8.5.10",
-    "esbuild": "^0.19.9",
-    "prettier": "^3.1.1",
+    "esbuild": "^0.20.1",
+    "prettier": "^3.2.5",
     "typescript": "^5.3.3"
   },
   "dependencies": {
     "dayjs": "^1.11.10",
-    "nanoid": "^5.0.4",
-    "ora": "^7.0.1",
-    "ws": "^8.15.1"
+    "nanoid": "^5.0.6",
+    "ora": "^8.0.1",
+    "ws": "^8.16.0"
   }
 }
