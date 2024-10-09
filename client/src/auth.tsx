@@ -2,21 +2,21 @@ import React, { PropsWithChildren, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth.ts';
 
-const AuthChecker: React.FC<PropsWithChildren> = ({ children }) => {
-  const [init, setInit] = useState(false);
+const Auth: React.FC<PropsWithChildren> = ({ children }) => {
   const isAuthed = useAuth();
   const navigate = useNavigate();
+  const [init, setInit] = useState(false);
 
   useEffect(() => {
     if (!isAuthed) {
-      if (location.pathname === '/' || location.pathname === '/login') {
+      if (location.hash === '#/login') {
         setInit(true);
         return;
       }
       navigate('/login');
       return;
     }
-    if (location.pathname === '/' || location.pathname === '/login') {
+    if (location.hash !== '#/chat') {
       navigate('/chat');
       return;
     }
@@ -26,4 +26,4 @@ const AuthChecker: React.FC<PropsWithChildren> = ({ children }) => {
   return <>{init && children}</>;
 };
 
-export default AuthChecker;
+export default Auth;

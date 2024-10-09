@@ -5,7 +5,7 @@ import { RoomMessage } from '../../../../service/message.ts';
 import TitleLine from '../title';
 import PictureUploader from '../picture-uploader';
 import styles from './index.module.scss';
-import { Modal } from '@arco-design/web-react';
+import { Image } from '@arco-design/web-react';
 
 interface Props {
   userId: string;
@@ -69,8 +69,8 @@ const Communication: React.FC<Props> = ({
       lastShiftKeyTimerId.current = undefined;
       lastShiftKey.current = true;
       if (lastEnterKey.current) {
-        lastEnterKeyTimerId.current &&
-          clearTimeout(lastEnterKeyTimerId.current);
+        lastEnterKeyTimerId.current
+        && clearTimeout(lastEnterKeyTimerId.current);
         lastEnterKeyTimerId.current = undefined;
         lastEnterKey.current = false;
         insertNewLine();
@@ -130,9 +130,9 @@ const Communication: React.FC<Props> = ({
     if (type === undefined) {
       return (
         <div>
-          {text.split('\n').map((item) => {
+          {text.split('\n').map((item, idx) => {
             console.log(item);
-            return <p>{item}</p>;
+            return <p key={idx}>{item}</p>;
           })}
         </div>
       );
@@ -142,26 +142,21 @@ const Communication: React.FC<Props> = ({
       const images = JSON.parse(text) as string[];
       return (
         <>
-          {images.map((item) => {
+          {images.map((item, idx) => {
             return (
-              <img
-                key={item.substring(0, 100)}
+              <Image
+                key={idx}
                 src={item}
                 alt='image'
-                style={{ maxHeight: '500px', maxWidth: '100%' }}
-                onClick={() => {
-                  Modal.info({
-                    style: {
-                      maxWidth: '90%',
-                      minWidth: '80%',
-                      borderRadius: '20px'
-                    },
-                    wrapStyle: {
-                      padding: '50px 0'
-                    },
-                    title: '预览',
-                    content: <img src={item} width='100%' alt='preview' />
-                  });
+                width={200}
+                height={200}
+                style={{
+                  width: '204px',
+                  height: '204px',
+                  border: '2px solid white',
+                  borderRadius: '20px',
+                  boxShadow: '0 0 20px 1px rgba(0, 0, 0, 0.05)',
+                  margin: '10px'
                 }}
               />
             );
@@ -202,7 +197,8 @@ const Communication: React.FC<Props> = ({
             <div
               className={styles.bottomIndicator}
               ref={msgWindowBottomRef}
-            ></div>
+            >
+            </div>
           </div>
         </div>
       </div>

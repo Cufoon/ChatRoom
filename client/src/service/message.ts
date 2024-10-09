@@ -13,13 +13,12 @@ export interface RoomMessage {
 }
 
 export type UserMessage =
-  | {
-      from: string;
-      uid: string;
-      content: string;
-      time: string;
-    }
-  | RoomMessage;
+  {
+    from: string;
+    uid: string;
+    content: string;
+    time: string;
+  } | RoomMessage;
 
 export const enum MessageType {
   USER_LOGIN_SUCCESS = 'login-success',

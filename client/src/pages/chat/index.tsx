@@ -92,7 +92,7 @@ const ChatPage = () => {
   }, []);
 
   const ws = useWebSocket(
-    `ws://${location.hostname}:3345`,
+    `ws://${location.hostname}/api/chat`,
     whenOpenWebSocket,
     handleMessage
   );

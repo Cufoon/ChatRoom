@@ -9,7 +9,7 @@ const consoleSpinner = ora({ spinner: 'soccerHeader' }).start('开始运行...')
 let msgCount = 0n;
 const formatTime = () => dayjs().format('YYYY-MM-DD HH:mm:ss');
 const wss = new WebSocketServer({
-    port: 3345,
+    port: 3100,
     clientTracking: true,
     maxPayload: 42949672960,
     perMessageDeflate: {

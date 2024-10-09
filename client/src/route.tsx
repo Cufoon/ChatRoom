@@ -1,33 +1,21 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createHashRouter } from 'react-router-dom';
 import ForbiddenPage from './pages/404';
 import LoginPage from './pages/login';
 import ChatPage from './pages/chat';
-import AuthChecker from './auth.tsx';
+import Auth from './auth';
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: '/',
-    element: (
-      <AuthChecker>
-        <LoginPage />
-      </AuthChecker>
-    )
+    element: <Auth></Auth>
   },
   {
     path: '/login',
-    element: (
-      <AuthChecker>
-        <LoginPage />
-      </AuthChecker>
-    )
+    element: <Auth><LoginPage /></Auth>
   },
   {
     path: '/chat',
-    element: (
-      <AuthChecker>
-        <ChatPage />
-      </AuthChecker>
-    )
+    element: <Auth><ChatPage /></Auth>
   },
   {
     path: '*',

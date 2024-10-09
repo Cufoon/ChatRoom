@@ -61,7 +61,9 @@ export const useWebSocket = <T>(
   const websocketRef = useRef<WebSocket>();
 
   const send = <U>(data: U) => {
-    websocketRef.current && sendWebSocket(websocketRef.current, data);
+    if (websocketRef.current) {
+      sendWebSocket(websocketRef.current, data);
+    }
   };
 
   useEffect(() => {
