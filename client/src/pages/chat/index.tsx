@@ -19,6 +19,7 @@ import Communication from './components/communication';
 import OnlineUser from './components/online-user';
 import { setUsername } from '../../utils/storage.ts';
 import Loading from './components/loading/index.tsx';
+import { Popconfirm } from '@arco-design/web-react';
 
 const enum LoadDataState {
   NONE = 0,
@@ -70,6 +71,9 @@ const ChatPage = () => {
       [MessageType.SYSTEM_USER_LIST]: (users) => {
         setUserList(users);
         setInitState((prevState) => prevState | LoadDataState.LOAD_USER_LIST);
+      },
+      [MessageType.SYSTEM_CLEAR_MESSAGES]: () => {
+        setRoomMessages([]);
       },
       [MessageType.GET_MESSAGE_FROM_ROOM]: (msg) => {
         setRoomMessages((prevState) => {
@@ -163,6 +167,18 @@ const ChatPage = () => {
           </div>
           <div className={styles.rightWrapper}>
             <div className={styles.right} id='userListOuter'>
+              <Popconfirm
+                position='left'
+                focusLock
+                cancelText='取消'
+                okText='确认'
+                content='确定要清空吗？'
+                onOk={() => {
+                  ws.send({ type: MessageType.SYSTEM_CLEAR_MESSAGES });
+                }}
+              >
+                <div className={styles.rightFunction}>清空历史消息</div>
+              </Popconfirm>
               <Profile name={username || ''} onChangeName={onChangeName} />
               <OnlineUser users={userList} currentUser={userId} />
             </div>

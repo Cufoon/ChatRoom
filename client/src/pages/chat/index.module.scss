@@ -46,5 +46,21 @@
       width: 300px;
       height: 100%;
     }
+
+    &-function {
+      align-self: flex-end;
+      line-height: 1.2em;
+      padding: 5px;
+      color: rgb(240, 132, 132);
+      border-radius: 22px;
+      transition: all 0.25s ease-in-out;
+      cursor: pointer;
+      user-select: none;
+
+      &:hover {
+        color: rgb(194, 24, 24);
+        background-color: rgb(240, 248, 255);
+      }
+    }
   }
 }

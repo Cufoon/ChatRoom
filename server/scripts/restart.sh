@@ -2,8 +2,11 @@
 
 script_dir="$(cd "$(dirname "$0")" && pwd)"
 
-pm2 stop chat
-pm2 delete chat
+cd $script_dir
+cfl_app_name=chat
+
+pm2 stop $cfl_app_name
+pm2 delete $cfl_app_name
 pm2 save --force
-pm2 start $script_dir/pm2.config.cjs
+pm2 start pm2.config.cjs
 pm2 save

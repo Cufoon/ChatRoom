@@ -4,6 +4,7 @@ import cx from 'classnames';
 import { UserInfo } from '../../../../service/message.ts';
 import styles from './index.module.scss';
 import TitleLine from '../title';
+import { generateColorFromString } from '../../../../utils/util.ts';
 
 interface Props {
   users: UserInfo[];
@@ -23,7 +24,14 @@ const OnlineUser: React.FC<Props> = ({ users, currentUser }) => {
                   [styles.userMe]: item.uid === currentUser
                 })}
               >
-                {item.name}
+                <div style={{
+                  borderRadius: '20px',
+                  color: generateColorFromString(item.name),
+                  padding: '2px 5px'
+                }}
+                >
+                  *****
+                </div>
                 {/* <div className={styles.messageBtn}>私聊</div> */}
               </div>
             </div>

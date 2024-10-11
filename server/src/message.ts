@@ -1,7 +1,7 @@
 import type { Message } from './interface.js';
 
 let pointH = 0;
-const messageHistory: Message[] = [];
+let messageHistory: Message[] = [];
 
 const saveHistory = (data: Message) => {
   if (pointH > 499) {
@@ -35,7 +35,9 @@ const getHistory = () => {
   ];
   let r = '';
   for (let i = 0; i < resultList.length; i++) {
-    r = r + resultList[i] + ',';
+    if (resultList[i] !== 'undefined') {
+      r = r + resultList[i] + ',';
+    }
   }
   if (r.length > 0) {
     r = r.substring(0, r.length - 1);
@@ -43,7 +45,13 @@ const getHistory = () => {
   return `[${r}]`;
 };
 
+const clearHistory = () => {
+  messageHistory = [];
+  pointH = 0;
+};
+
 export default {
   saveHistory,
-  getHistory
+  getHistory,
+  clearHistory
 };

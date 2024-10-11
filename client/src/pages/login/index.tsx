@@ -21,6 +21,13 @@ const LoginPage = () => {
     navigate('/chat');
   };
 
+  const handleKeyDown = (e: { key: string }) => {
+    const eKey = e.key.toLowerCase();
+    if (eKey === 'enter') {
+      login();
+    }
+  };
+
   return (
     <div className={styles.login}>
       <div className={styles.title}>一个聊天室</div>
@@ -30,6 +37,7 @@ const LoginPage = () => {
           placeholder='输入你的用户名'
           value={name}
           onChange={(e) => setName(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
         <div className={styles.comein} onClick={login}>
           进入聊天室

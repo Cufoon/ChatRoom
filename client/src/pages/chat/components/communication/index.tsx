@@ -6,6 +6,7 @@ import TitleLine from '../title';
 import PictureUploader from '../picture-uploader';
 import styles from './index.module.scss';
 import { Image } from '@arco-design/web-react';
+import { generateColorFromString } from '../../../../utils/util.ts';
 
 interface Props {
   userId: string;
@@ -180,7 +181,7 @@ const Communication: React.FC<Props> = ({
                 >
                   <div className={styles.time}>{item.time}</div>
                   <div className={styles.chatCardLine}>
-                    <div className={styles.user}>{item.name}</div>
+                    <div className={styles.user} style={{ background: generateColorFromString(item.name) }}></div>
                     <div className={styles.messageWrapper}>
                       <div
                         className={cx(styles.message, {

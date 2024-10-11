@@ -1,12 +1,12 @@
 import { WebSocket, WebSocketServer } from 'ws';
 import { nanoid } from 'nanoid';
 import dayjs from 'dayjs';
-import ora from 'ora';
+// import ora from 'ora';
 import userStore from './user.js';
 import messageStore from './message.js';
 
-const appStartTime = Date.now();
-const consoleSpinner = ora({ spinner: 'soccerHeader' }).start('开始运行...');
+// const appStartTime = Date.now();
+// const consoleSpinner = ora({ spinner: 'soccerHeader' }).start('开始运行...');
 let msgCount = 0n;
 
 const formatTime = () => dayjs().format('YYYY-MM-DD HH:mm:ss');
@@ -33,9 +33,9 @@ const wss = new WebSocketServer({
   }
 });
 
-const broadcast = (message: { type: string; data: unknown }) => {
-  // console.log(message);
-  // console.log(Date.now());
+const broadcast = <T>(message: { type: string; data?: T }) => {
+  console.log(message);
+  console.log(Date.now());
   msgCount++;
   const data = JSON.stringify(message);
   userStore.getUserListWithWS().forEach((item) => {
@@ -55,9 +55,17 @@ wss.on('connection', (ws, req) => {
   // 当接收到客户端发过来的消息的时候
   ws.on('message', (content) => {
     const data = JSON.parse(content.toString());
+    console.log('message', data);
     const type = data.type || 'none';
     if (cufoon_chat_uid !== undefined) {
       const username = userStore.getUserName(cufoon_chat_uid);
+      // 清空聊天记录
+      if (type === 'system-clear-messages') {
+        console.log('system-clear-messages');
+        messageStore.clearHistory();
+        broadcast({ type: 'system-clear-messages' });
+        return;
+      }
       // 聊天室消息
       if (type === 'text') {
         const msg = {
@@ -164,34 +172,34 @@ wss.on('connection', (ws, req) => {
   });
 });
 
-const bytes2MiB = (n: number) => `${(n / (1024 * 1024)).toFixed(3)}MiB`;
+// const bytes2MiB = (n: number) => `${(n / (1024 * 1024)).toFixed(3)}MiB`;
 
-setInterval(() => {
-  const mem = process.memoryUsage();
-  const memData = {
-    rss: bytes2MiB(mem.rss),
-    heapTotal: bytes2MiB(mem.heapTotal),
-    heapUsed: bytes2MiB(mem.heapUsed),
-    external: bytes2MiB(mem.external),
-    arrayBuffers: bytes2MiB(mem.arrayBuffers)
-  };
-  const nowTime = dayjs();
-  const hours = nowTime.diff(appStartTime, 'hour', false);
-  const minutes = nowTime.diff(appStartTime, 'minute', false) % 60;
-  const seconds = nowTime.diff(appStartTime, 'second', false) % 60;
-  consoleSpinner.start(
-    `正在运行中...
-运行时间: ${hours > 0 ? `${hours}小时` : ''}${
-      minutes > 0 ? `${minutes}分钟` : ''
-    }${seconds}秒
-当前连接数: ${wss.clients.size}
-已产生消息: ${msgCount}条
-当前内存使用: {
-  rss: ${memData.rss}
-  heapTotal: ${memData.heapTotal}
-  heapUsed: ${memData.heapUsed}
-  external: ${memData.external}
-  arrayBuffers: ${memData.arrayBuffers}
-}`
-  );
-}, 1200);
+// setInterval(() => {
+//   const mem = process.memoryUsage();
+//   const memData = {
+//     rss: bytes2MiB(mem.rss),
+//     heapTotal: bytes2MiB(mem.heapTotal),
+//     heapUsed: bytes2MiB(mem.heapUsed),
+//     external: bytes2MiB(mem.external),
+//     arrayBuffers: bytes2MiB(mem.arrayBuffers)
+//   };
+//   const nowTime = dayjs();
+//   const hours = nowTime.diff(appStartTime, 'hour', false);
+//   const minutes = nowTime.diff(appStartTime, 'minute', false) % 60;
+//   const seconds = nowTime.diff(appStartTime, 'second', false) % 60;
+//   consoleSpinner.start(
+//     `正在运行中...
+// 运行时间: ${hours > 0 ? `${hours}小时` : ''}${
+//       minutes > 0 ? `${minutes}分钟` : ''
+//     }${seconds}秒
+// 当前连接数: ${wss.clients.size}
+// 已产生消息: ${msgCount}条
+// 当前内存使用: {
+//   rss: ${memData.rss}
+//   heapTotal: ${memData.heapTotal}
+//   heapUsed: ${memData.heapUsed}
+//   external: ${memData.external}
+//   arrayBuffers: ${memData.arrayBuffers}
+// }`
+//   );
+// }, 1200);

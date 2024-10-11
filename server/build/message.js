@@ -1,5 +1,5 @@
 let pointH = 0;
-const messageHistory = [];
+let messageHistory = [];
 const saveHistory = (data) => {
     if (pointH > 499) {
         pointH = 0;
@@ -28,14 +28,21 @@ const getHistory = () => {
     ];
     let r = '';
     for (let i = 0; i < resultList.length; i++) {
-        r = r + resultList[i] + ',';
+        if (resultList[i] !== 'undefined') {
+            r = r + resultList[i] + ',';
+        }
     }
     if (r.length > 0) {
         r = r.substring(0, r.length - 1);
     }
     return `[${r}]`;
 };
+const clearHistory = () => {
+    messageHistory = [];
+    pointH = 0;
+};
 export default {
     saveHistory,
-    getHistory
+    getHistory,
+    clearHistory
 };
